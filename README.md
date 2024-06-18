@@ -1,5 +1,4 @@
-### Autonomous-Robot-Maze-Nav
-## Autonomous robot maze navigation using extended kalman filter
+## Autonomous Robot Maze Navigation Using Extended Kalman Filter
 
 ![](https://github.com/TonyLiu836/Autonomous-Robot-Maze-Nav/blob/main/Robot_Nav_vid_SpedUp.gif)
 
