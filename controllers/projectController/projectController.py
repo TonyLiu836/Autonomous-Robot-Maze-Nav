@@ -14,8 +14,6 @@ import scipy.stats
 # create the Robot instance.
 robot = Supervisor()
 timestep = int(robot.getBasicTimeStep())
-#robot = Supervisor()
-#print("here!")
 camera = robot.getDevice('camera')
 camera.enable(1)
 
@@ -224,6 +222,7 @@ while robot.step(timestep) != -1:
     if mLineFound == False:
         robotState = 2
 
+        #Cal info needed for bug 2 algorithm for path planning
         mLine_Robotx = x_hat_t[0]
         mLine_Goalx = goalPos[goal_ind][0]
         mLine_Roboty = x_hat_t[1]
@@ -231,7 +230,6 @@ while robot.step(timestep) != -1:
 
         mLine_slope = (mLine_Goaly - mLine_Roboty) / (mLine_Goalx - mLine_Robotx)
         mLine_intercept = mLine_Goaly - (mLine_slope * mLine_Goalx)
-        #print("slope = ", mLine_slope, "  intercept = ", mLine_intercept)
         
         mLineFound = True
         
@@ -248,6 +246,7 @@ while robot.step(timestep) != -1:
             dist2hitPt = np.linalg.norm(x_hat_t[0:2] - hitPt)
 
             if dist2mLine_currPt < 0.15 and dist2hitPt > 0.5:
+                
                 #decide if robot should keep following wall by comparing dist between hitPt and leavePt
                 leavePt[0], leavePt[1] = x_hat_t[0], x_hat_t[1]
                 
